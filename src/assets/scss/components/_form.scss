@@ -71,7 +71,6 @@
 		padding: 0.75em 1em;
 	}
 
-	input[type="checkbox"],
 	input[type="radio"], {
 		@include vendor('appearance', 'none');
 		display: block;
@@ -113,13 +112,13 @@
 		}
 	}
 
-	input[type="checkbox"] {
-		& + label {
-			&:before {
-				border-radius: _size(border-radius);
-			}
-		}
-	}
+	// input[type="checkbox"] {
+	// 	& + label {
+	// 		&:before {
+	// 			border-radius: _size(border-radius);
+	// 		}
+	// 	}
+	// }
 
 	input[type="radio"] {
 		& + label {
@@ -174,7 +173,7 @@
 			}
 		}
 
-		input[type="checkbox"],
+		// input[type="checkbox"],
 		input[type="radio"], {
 			& + label {
 				color: _palette($p, fg);
