@@ -53,11 +53,11 @@ class Index extends React.Component {
     } else if (total > 12 && total <=22) {
       scoreMessage = "You just barely made the cut.  Slightly above being totally MIA but also c'mon where's your LDFS?? o(TヘTo)"
     } else {
-      scoreMessage = "It looks like someone's been MIA... pls explain yourself ლ(ಠ_ಠ ლ)";
+      scoreMessage = "It looks like someone's been MIA... Not to be rude but are you rly an active/alum?? pls explain yourself (ಠ_ಠ)";
     }
     let message = this.state.showScore ? <p>{ scoreMessage }</p> : null;
     const cowSize = {
-      fontSize: '17px',
+      fontSize: '15px',
       color: 'blue'
     }
     let cow = this.state.hovered ? <span style={cowSize}>Why do cows have hooves? Because they lactose :3</span> : null;
@@ -92,8 +92,7 @@ class Index extends React.Component {
               <span className="image">
                 <img src={ moo } alt="deltaepsilonmoo"
                   onMouseEnter={() => this.setState({hovered: true})}
-                  onMouseLeave={() => this.setState({hovered: false})}
-                  style={{transform: `${this.state.hovered ? 'scale(1.1, 1.1)' : 'scale(1.0,1.0)'}`}}/>
+                  onMouseLeave={() => this.setState({hovered: false})}/>
                 { cow }
               </span>
             </div>
