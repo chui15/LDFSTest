@@ -17,19 +17,15 @@ class Index extends React.Component {
     }
   }
 
-  _handleWaypointEnter = () => {
-    this.setState(() => ({ stickyNav: false }))
-  }
-
-  _handleWaypointLeave = () => {
-    this.setState(() => ({ stickyNav: true }))
-  }
-
-  handleCheck = () => {
-    this.setState(() => ({
-      isChecked: true,
-      score: this.state.score + 1
-    }))
+  handleCheck = (e) => {
+    if (this.state.showScore) {
+      e.preventDefault();
+    } else {
+      this.setState(() => ({
+        isChecked: true,
+        score: this.state.score + 1
+      }))
+    }
   }
 
   handleSubmit = () => {
@@ -38,6 +34,23 @@ class Index extends React.Component {
 
   render() {
     const items = data.ListItems;
+    let total = this.state.score;
+    let score = this.state.showScore ? <h2>Your LDFS Score is: { total }/60</h2> : null;
+    let scoreMessage;
+    if (total > 50 && total <= 60) {
+      scoreMessage = "You truly have Big LDFS Energy. Props to you for being so active in DEM, you're awesome and ily	(´• ω •`)ﾉ"
+    } else if (total > 40 && total <= 50) {
+      scoreMessage = "Hmm not bad, you're pretty involved in DEM and do embody the LDFS spirit. However, there's still room for improvement ٩(｡•́‿•̀｡)۶"
+    } else if (total > 30 && total <= 40) {
+      scoreMessage = "I'd say you're about average in terms of LDFS spirit and activeness.  Is that really all you got?? (｡•́︿•̀｡)"
+    } else if (total > 20 && total <= 30) {
+      scoreMessage = "In terms of this test you are not the best but also not necessarily the worst but also not neccessarily good either.  It's like you put the L and S in LDFS but as in Low Score, eet ees what eet ees ¯\_(ツ)_/¯"
+    } else if (total > 10 && total <=20) {
+      scoreMessage = "You just barely made the cut.  Slightly above being totally MIA but also c'mon where's your LDFS?? o(TヘTo)"
+    } else {
+      scoreMessage = "It looks like someone's been MIA... pls explain yourself ლ(ಠ_ಠ ლ)";
+    }
+    let message = this.state.showScore ? <p>{ scoreMessage }</p> : null;
     return (
       <Layout>
         <Helmet title="The LDFS Score Test | Delta Epsilon Mu, Inc." />
@@ -67,10 +80,13 @@ class Index extends React.Component {
                 </ul>
               </div>
               <span className="image">
-                <img src={moo} alt="deltaepsilonmoo" />
+                <img src={ moo } alt="deltaepsilonmoo" />
               </span>
             </div>
-            <button>Calculate My LDFS Score! (๑˃ᴗ˂)ﻭ</button>
+            <button onClick={this.handleSubmit}>Calculate My LDFS Score! (๑˃ᴗ˂)ﻭ</button>
+
+            { score }
+            { message }
           </section>
         </div>
       </Layout>

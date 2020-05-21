@@ -11,7 +11,7 @@
 		color: _palette(fg);
 	}
 
-	body, input, select, textarea, button {
+	body, input, select, textarea, button, p {
 		font-family: _font(family);
 		font-size: 17pt;
 		font-weight: _font(weight);
@@ -26,8 +26,12 @@
 		}
 
 		@include breakpoint(xxsmall) {
-			font-size: 11pt;
+			font-size: 10pt;
 		}
+	}
+
+	button {
+		margin-bottom: 25px;
 	}
 
 	a {
